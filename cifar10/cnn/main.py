@@ -26,7 +26,7 @@ if __name__ == '__main__':
         default='sgd',
         help='currently supports SGD, Momentum SGD, AdaGrad, RMSprop and Adam'
     )
-    parser.add_argument('--device', choices=['cpu', 'cuda'], default='cpu')
+    parser.add_argument('--device', choices=['cpu', 'gpu'], default='cpu')
 
     args = parser.parse_args()
 
@@ -41,7 +41,10 @@ if __name__ == '__main__':
 
     # Set model
     model = CNN()
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cuda')
+    if args.device == 'gpu':
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cuda')
+    else:
+        device = args.device
 
     optimizer = select_optimizer(args.optimizer_type, model)
 

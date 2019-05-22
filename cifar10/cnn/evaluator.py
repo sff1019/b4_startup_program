@@ -11,7 +11,8 @@ def evaluate_all(loader, model, device):
     with torch.no_grad():
         for data in loader:
             images, labels = data
-            images, labels = images.to(device), labels.to(device)
+            if device != 'cpu':
+                images, labels = images.to(device), labels.to(device)
 
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
@@ -35,7 +36,8 @@ def evaluate_classes(loader, model, classes, device):
     with torch.no_grad():
         for data in loader:
             images, labels = data
-            images, labels = images.to(device), labels.to(device)
+            if device != 'cpu':
+                images, labels = images.to(device), labels.to(device)
 
             outputs = model(images)
             _, predicted = torch.max(outputs, 1)

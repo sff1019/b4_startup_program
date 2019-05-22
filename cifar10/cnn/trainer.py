@@ -25,7 +25,8 @@ def train(
 
         for i, data in enumerate(train_loader, 0):
             inputs, labels = data
-            inputs, labels = inputs.to(device), labels.to(device)
+            if device != 'cpu':
+                inputs, labels = inputs.to(device), labels.to(device)
 
             # Initialize optimizers
             optimizer.zero_grad()
