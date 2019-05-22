@@ -1,0 +1,106 @@
+[
+  [
+    {
+      "epoch": 0,
+      "main/loss": 1.9463813644075394,
+      "main/accuracy": 37.142,
+      "test/accuracy": 37.12,
+      "elapsed_time": 46.740821838378906
+    },
+    {
+      "epoch": 1,
+      "main/loss": 1.6327643258047104,
+      "main/accuracy": 45.472,
+      "test/accuracy": 45.03,
+      "elapsed_time": 95.31909990310669
+    },
+    {
+      "epoch": 2,
+      "main/loss": 1.488673812496662,
+      "main/accuracy": 49.474,
+      "test/accuracy": 49.23,
+      "elapsed_time": 148.5651798248291
+    },
+    {
+      "epoch": 3,
+      "main/loss": 1.4152928770685196,
+      "main/accuracy": 52.268,
+      "test/accuracy": 50.93,
+      "elapsed_time": 199.5092318058014
+    },
+    {
+      "epoch": 4,
+      "main/loss": 1.3691669212317468,
+      "main/accuracy": 53.346,
+      "test/accuracy": 52.27,
+      "elapsed_time": 246.54635906219482
+    },
+    {
+      "epoch": 5,
+      "main/loss": 1.3307878098893167,
+      "main/accuracy": 53.258,
+      "test/accuracy": 51.85,
+      "elapsed_time": 294.55019903182983
+    },
+    {
+      "epoch": 6,
+      "main/loss": 1.3041691726636886,
+      "main/accuracy": 55.532,
+      "test/accuracy": 53.71,
+      "elapsed_time": 343.1830358505249
+    },
+    {
+      "epoch": 7,
+      "main/loss": 1.2798749003458023,
+      "main/accuracy": 56.124,
+      "test/accuracy": 53.83,
+      "elapsed_time": 392.1042318344116
+    },
+    {
+      "epoch": 8,
+      "main/loss": 1.2634938108229636,
+      "main/accuracy": 56.016,
+      "test/accuracy": 54.41,
+      "elapsed_time": 439.55376267433167
+    },
+    {
+      "epoch": 9,
+      "main/loss": 1.246242376897335,
+      "main/accuracy": 57.782,
+      "test/accuracy": 55.72,
+      "elapsed_time": 486.7724459171295
+    }
+  ],
+  [
+    {
+      "plane": 60.9
+    },
+    {
+      "car": 70.3
+    },
+    {
+      "bird": 42.3
+    },
+    {
+      "cat": 29.8
+    },
+    {
+      "deer": 43.3
+    },
+    {
+      "dog": 53.2
+    },
+    {
+      "frog": 65.8
+    },
+    {
+      "horse": 57.4
+    },
+    {
+      "ship": 68.2
+    },
+    {
+      "truck": 66.0
+    }
+  ]
+]
