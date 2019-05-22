@@ -1,0 +1,5 @@
+# Data
+
+This project uses Mnist data
+
+!(MNIST data)[https://camo.githubusercontent.com/d440ac2eee1cb3ea33340a2c5f6f15a0878e9275/687474703a2f2f692e7974696d672e636f6d2f76692f3051493378675875422d512f687164656661756c742e6a7067]
