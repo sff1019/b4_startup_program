@@ -1,25 +1,15 @@
 import argparse
-import matplotlib
-import os
-import sys
 import time
+import torch
 import torch.nn as nn
-# import torch.optim as optim
-sys.path.append(os.pardir)
 
-try:
-    from dataset import load
-    from evaluator import evaluate_classes
-    from log import plot_log
-    from model import MLP
-    from optimizers import select_optimizer
-    from trainer import train
-except ImportError as e:
-    print(e)
+from dataset import load
+from evaluator import evaluate_classes
+from log import plot_log
+from model import CNN, MLP
+from optimizers import select_optimizer
+from trainer import train
 
-
-output_file = 'cifar10_sgd_result'
-opt_type = sys.argv[1]
 
 if __name__ == '__main__':
 
@@ -31,6 +21,7 @@ if __name__ == '__main__':
         help='currently supports SGD, Momentum SGD, AdaGrad, RMSprop and Adam'
     )
     parser.add_argument('--device', choices=['cpu', 'gpu'], default='cpu')
+    parser.add_argument('--net_type', choices=['mlp', 'cnn'], default='cnn')
 
     args = parser.parse_args()
 
@@ -44,7 +35,17 @@ if __name__ == '__main__':
     start_time = time.time()
 
     # Set model
-    model = MLP()
+    if (args.net_type == 'mlp'):
+        model = MLP()
+    else:
+        model = CNN()
+
+    # Set device
+    if args.device == 'gpu':
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cuda')
+        model.to(device)
+    else:
+        device = args.device
 
     optimizer = select_optimizer(args.optimizer_type, model)
 
@@ -52,6 +53,7 @@ if __name__ == '__main__':
 
     # Train data
     train_result = train(
+        device,
         epochs,
         loss_fn,
         model,
@@ -61,7 +63,7 @@ if __name__ == '__main__':
         train_loader,
     )
 
-    classified_result = evaluate_classes(test_loader, model, classes)
+    classified_result = evaluate_classes(test_loader, model, classes, device)
 
     plot_log([train_result, classified_result],
-             f'cifar_mlp_{args.device}_{args.optimizer_type}')
+             f'cifar10_{args.net_type}_{args.device}_{args.optimizer_type}')

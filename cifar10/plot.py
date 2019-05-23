@@ -18,7 +18,7 @@ parser.add_argument('--net_type', choices=['mlp', 'cnn'], default='mlp')
 
 args = parser.parse_args()
 
-path_header = 'cifar_'
+path_header = 'cifar10_'
 optimizers = ['adam',  'adagrad', 'msgd', 'rmsprop', 'sgd']
 
 if args.plot_type == 'accuracy':

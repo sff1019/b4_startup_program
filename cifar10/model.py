@@ -1,6 +1,4 @@
-import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 IMG_WIDTH = 32
 IMG_HEIGHT = 32
@@ -24,9 +22,12 @@ class CNN(nn.Module):
             nn.MaxPool2d(kernel_size=2, stride=2),
         )
 
-        self.layer3 = nn.Sequential(
+        self.fc_layer = nn.Sequential(
+            nn.Dropout(p=0.1),
             nn.Linear(16 * 5 * 5, 120),
+            nn.ReLU(),
             nn.Linear(120, 84),
+            nn.ReLU(),
             nn.Linear(84, 10),
         )
 
@@ -35,6 +36,24 @@ class CNN(nn.Module):
         x = self.layer2(x)
 
         x = x.view(-1, 16*5*5)
-        x = self.layer3(x)
+        x = self.fc_layer(x)
+
+        return x
+
+
+class MLP(nn.Module):
+    def __init__(self):
+        super(MLP, self).__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(IMG_WIDTH * IMG_HEIGHT * COL_CHAN, 100),
+            nn.ReLU(),
+            nn.Linear(100, 100),
+            nn.ReLU(),
+            nn.Linear(100, 10),
+        )
+
+    def forward(self, x):
+        x = x.view(-1, IMG_WIDTH * IMG_HEIGHT * COL_CHAN)
+        x = self.layers(x)
 
         return x

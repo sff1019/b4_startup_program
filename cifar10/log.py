@@ -6,7 +6,7 @@ def plot_log(item, out):
     """
     Dump results data into log file
     """
-    output_path = f'{out}/log'
+    output_path = f'outputs/{out}/log'
 
     if not os.path.exists(out):
         os.makedirs(out)
