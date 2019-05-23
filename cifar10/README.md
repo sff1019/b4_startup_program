@@ -1,5 +1,9 @@
 # CIFAR10の学習・評価（Pytorch）
 
+<p align='center'>
+  <img height='300' src='./assets/cifa10.png?raw=true'>
+</p>
+
 ## 目次
 
 1. [用いた最適化手法について](#用いた最適化手法について)
@@ -69,7 +73,7 @@ RMSpropの改良版である．
 [Pytorchのドキュメント](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)を参考に実装
 
 <p align='center'>
-  <img height='300' src='./assets/chainer_mnist_mlp_detailed.png?raw=true'>
+  <img height='300' src='./assets/cifar10_mlp_diagram.svg?raw=true'>
 </p>
 
 入力層: 100ノード  
@@ -133,7 +137,7 @@ RMSpropの改良版である．
 CUDA：10.1
 
 
-精度
+##### 精度
 
 <p align='center'>
   <img height='300' src='./assets/cifar_mlp_gpu_accuracy.png?raw=true'>
@@ -183,7 +187,7 @@ CUDA：10.1
 ## CNNを用いた実装
 
 <p align='center'>
-  <img height='300' src='./assets/chainer_mnist_cnn_detailed.png?raw=true'>
+  <img height='300' src='./assets/cifar10_cnn_diagram.svg?raw=true'>
 </p>
 
 入力層: 100ノード  
@@ -194,7 +198,7 @@ CUDA：10.1
 
 #### CPUにおける実行
 
-精度
+##### 精度
 
 <p align='center'>
   <img height='300' src='./assets/cifar_cnn_cpu_accuracy.png?raw=true'>
@@ -208,6 +212,8 @@ CUDA：10.1
 |AdaGrad|36.13|38.332|40.008|41.294|41.826|42.49|43.002|43.326|43.776|44.216|36.2|38.38|39.66|40.7|41.43|42.27|42.72|43.31|43.67|43.86|
 |RMSprop|45.502|52.706|51.804|56.306|57.092|58.002|57.362|58.504|58.542|60.278|45.43|50.99|50.87|54.94|54.93|55.91|55.56|56.46|56.11|57.79|
 |Adam|51.43|54.674|57.026|57.554|59.238|60.126|60.04|58.686|61.33|62.132|50.29|53.28|55.19|55.3|57.7|57.73|57.68|56.31|58.76|59.27|
+
+MLPに比べて，精度はあまりよくならなかった．これは，Dropoutや，
 
 損失
 

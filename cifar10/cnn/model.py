@@ -31,7 +31,6 @@ class CNN(nn.Module):
         )
 
     def forward(self, x):
-        # x = x.view(-1, IMG_WIDTH * IMG_HEIGHT * COL_CHAN)
         x = self.layer1(x)
         x = self.layer2(x)
 
