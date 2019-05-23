@@ -1,7 +1,7 @@
 # CIFAR10の学習・評価（Pytorch）
 
 <p align='center'>
-  <img height='300' src='./assets/cifa10.png?raw=true'>
+  <img height='300' src='./assets/cifar10.png?raw=true'>
 </p>
 
 ## 目次
