@@ -13,7 +13,7 @@ parser.add_argument(
     default='accuracy',
     help='currently supports Accuracy, Loss and Evaluated Time'
 )
-parser.add_argument('--device', choices=['cpu', 'gpu'], default='cpu')
+parser.add_argument('--device', choices=['cpu', 'gpu'], default='gpu')
 parser.add_argument('--net_type', choices=['mlp', 'cnn'], default='mlp')
 
 args = parser.parse_args()
@@ -33,7 +33,7 @@ def load_log():
     results = {}
     for optimizer in optimizers:
         with open(
-            f'./{args.net_type}/{args.device}/{path_header}{args.net_type}_{args.device}_{optimizer}/log'
+            f'./outputs/{path_header}{args.net_type}_{args.device}_{optimizer}/log'
         ) as f:
             results[optimizer] = ast.literal_eval(f.read())
 

@@ -8,8 +8,8 @@ def plot_log(item, out):
     """
     output_path = f'outputs/{out}/log'
 
-    if not os.path.exists(out):
-        os.makedirs(out)
+    if not os.path.exists(f'outputs/{out}'):
+        os.makedirs(f'outputs/{out}')
 
     with open(output_path, 'w+') as f:
         json.dump(item, f, indent=2)

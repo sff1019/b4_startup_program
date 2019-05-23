@@ -26,7 +26,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     batch_size = 128
-    epochs = 10
+    # epochs = 10
+    epochs = 1
 
     # load datasets
     train_loader, test_loader, classes = load()
