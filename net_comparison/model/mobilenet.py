@@ -38,13 +38,12 @@ class OneByOneBlock(nn.Module):
         return out
 
 
-class MobileNetV1(nn.Module):
+class MobileNet(nn.Module):
     def __init__(self):
-        super(MobileNetV1, self).__init__()
+        super(MobileNet, self).__init__()
 
         self.conv_bn = nn.Sequential(
-            nn.Conv2d(IMG_HEIGHT*IMG_WIDTH*COLOR_CHANNEL,
-                      32, kernel_size=3, stride=2),
+            nn.Conv2d(3, 32, kernel_size=3, stride=2),
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True),
 

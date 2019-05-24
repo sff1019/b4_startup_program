@@ -15,12 +15,6 @@ parser.add_argument(
 )
 parser.add_argument('--device', choices=['cpu', 'gpu'], default='gpu')
 parser.add_argument('--net_type', choices=['mlp', 'cnn'], default='mlp')
-parser.add_argument(
-    '--dir',
-    choices=['outputs_e10_b128', 'outputs_e50_b4'],
-    default='outputs_e50_b4'
-)
-parser.add_argument('--epochs', choices=['10', '50'], default='50')
 
 args = parser.parse_args()
 
@@ -39,7 +33,7 @@ def load_log():
     results = {}
     for optimizer in optimizers:
         with open(
-            f'./outputs/{args.dir}/{path_header}{args.net_type}_{args.device}_{optimizer}/log'
+            f'./outputs/{path_header}{args.net_type}_{args.device}_{optimizer}/log'
         ) as f:
             results[optimizer] = ast.literal_eval(f.read())
 
@@ -58,16 +52,8 @@ def extract_training_data(fields, lst):
 
 
 def print_table(lst):
-    header = '||'
-    alignment = '|-----------|'
-    for i in range(int(args.epochs)):
-        header = header + f' {i} |'
-        alignment = alignment + f':-:|'
-
-    # print('|| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|  ')
-    # print('|--------------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|  ')
-    print(header)
-    print(alignment)
+    print('|| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|  ')
+    print('|--------------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|  ')
 
     for optimizer in lst:
         row = f'|{optimizer}|'
@@ -78,12 +64,10 @@ def print_table(lst):
 
 
 if __name__ == '__main__':
-    max_epochs = int(args.epochs)
+    max_epochs = 10
 
     results = load_log()
 
-    # print(results)
-    #
     optimizers_results = {}
     for optimizer in results:
         optimizers_results[optimizer] = extract_training_data(
@@ -91,8 +75,6 @@ if __name__ == '__main__':
         )
 
     fig = plt.figure(1)
-    fig.suptitle(
-        f'{args.device.upper()}: Accuracy Comparison Based on Optimizer')
     ax = fig.add_subplot(111)
     print(optimizers_results)
     for optimizer in optimizers_results:
@@ -109,9 +91,9 @@ if __name__ == '__main__':
     lgd = ax.legend(handles, labels, loc='upper left',
                     bbox_to_anchor=(1, 1))
     ax.set_title(
-        f'Epochs: {max_epochs}')
+        f'{args.device.upper()}: Accuracy Comparison Based on Optimizer')
     ax.set_xlabel('Epoch Num')
     ax.set_ylabel(f'{args.plot_type.capitalize()}')
     ax.grid(True)
-    fig.savefig(f'assets/{path_header}{args.net_type}_{args.device}_{args.epochs}_{args.plot_type}.svg',
+    fig.savefig(f'assets/{path_header}{args.net_type}_{args.device}_{args.plot_type}',
                 bbox_inches='tight')
