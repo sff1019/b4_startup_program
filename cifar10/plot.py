@@ -92,7 +92,7 @@ if __name__ == '__main__':
 
     fig = plt.figure(1)
     fig.suptitle(
-        f'{args.device.upper()}: Accuracy Comparison Based on Optimizer')
+        f'{args.device.upper()}: {args.plot_type.capitalize()} Comparison Based on Optimizer')
     ax = fig.add_subplot(111)
     print(optimizers_results)
     for optimizer in optimizers_results:
@@ -101,7 +101,7 @@ if __name__ == '__main__':
                 list(range(max_epochs)),
                 optimizers_results[optimizer][data],
                 label=f'{optimizer}-{data}',
-                marker='x'
+                # marker='x'
             )
 
     print_table(optimizers_results)
