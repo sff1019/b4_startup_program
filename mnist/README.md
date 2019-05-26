@@ -82,7 +82,7 @@ AdaGrad, Adam, Momentum SGD, RMSprop, SGDで実行した．
 以下，それらにおける精度と実行時間の比較を行なった際の結果である．
 
 <p align='center'>
-  <img src='./assets/mlp_cpu_comp_acc.png?raw=true'>
+  <img src='./assets/mlp_cpu_comp_acc.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
@@ -102,7 +102,7 @@ Chainerのclassifierにおけるaccuracyは確率が最も高い分類の数値�
 最適化を行う際，損失を最小にしようとする．以下の図は損失を最適化手法ごとにプロットした図である．  
 
 <p align='center'>
-  <img src='./assets/mlp_cpu_comp_loss.png?raw=true'>
+  <img src='./assets/mlp_cpu_comp_loss.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
@@ -119,7 +119,7 @@ Chainerのclassifierにおけるaccuracyは確率が最も高い分類の数値�
 同時にelapsed time（実行時間）をプロットしてみたところ，以下のような結果となった.
 
 <p align='center'>
-  <img src='./assets/mlp_cpu_comp_elap.png?raw=true'>
+  <img src='./assets/mlp_cpu_comp_elapsed.svg'>
 </p>
 
 また，実行時間の詳細を下記に記す．
@@ -141,7 +141,7 @@ Chainerのclassifierにおけるaccuracyは確率が最も高い分類の数値�
 #### GPUにおける実行
 
 <p align='center'>
-  <img src='./assets/mlp_gpu_comp_acc.png?raw=true'>
+  <img src='./assets/mlp_gpu_comp_acc.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
@@ -153,7 +153,7 @@ Chainerのclassifierにおけるaccuracyは確率が最も高い分類の数値�
 |Adam|0.894|0.95|0.964|0.972|0.977|0.981|0.985|0.987|0.99|0.991|0.943|0.957|0.961|0.967|0.97|0.972|0.974|0.971|0.975|0.977|
 
 <p align='center'>
-  <img src='./assets/mlp_gpu_comp_loss.png?raw=true'>
+  <img src='./assets/mlp_gpu_comp_loss.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
@@ -166,7 +166,7 @@ Chainerのclassifierにおけるaccuracyは確率が最も高い分類の数値�
 
 
 <p align='center'>
-  <img src='./assets/mlp_gpu_comp_elap.png?raw=true'>
+  <img src='./assets/mlp_gpu_comp_elapsed.svg'>
 </p>
 
 また，実行時間の詳細を下記に記す．
@@ -198,7 +198,7 @@ Chainerのclassifierにおけるaccuracyは確率が最も高い分類の数値�
 MLPと同様の最適化手法で実行した．  
 
 <p align='center'>
-  <img src='./assets/cnn_cpu_comp_acc.png?raw=true'>
+  <img src='./assets/cnn_cpu_comp_acc.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
@@ -213,13 +213,13 @@ MLPと同様の最適化手法で実行した．
 CNNは層が深くなるにつれて，高度な情報が抽出できるという特徴がある．実際に，精度が向上したことからも，画像の特徴を学習できていることがわかる．
 
 <p align='center'>
-  <img src='./assets/cnn_cpu_comp_loss.png?raw=true'>
+  <img src='./assets/cnn_cpu_comp_loss.svg'>
 </p>
 
 精度と同様で，推移の仕方はMLPと同様で，エポックが進むにつれ減少するが，減少の仕方，そして最終値はCNNの方が早く，小さいことがわかる．
 
 <p align='center'>
-  <img src='./assets/cnn_cpu_comp_elapsed.png?raw=true'>
+  <img src='./assets/cnn_cpu_comp_elapsed.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
@@ -241,7 +241,7 @@ CNNは層が深くなるにつれて，高度な情報が抽出できるとい�
 CUDA：10.1
 
 <p align='center'>
-  <img src='./assets/cnn_gpu_comp_acc.png?raw=true'>
+  <img src='./assets/cnn_gpu_comp_acc.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
@@ -256,7 +256,7 @@ CUDA：10.1
 
 
 <p align='center'>
-  <img src='./assets/cnn_gpu_comp_loss.png?raw=true'>
+  <img src='./assets/cnn_gpu_comp_loss.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
@@ -271,7 +271,7 @@ CUDA：10.1
 また，精度と同様に，SGDの改良版Momentum SGD，AdaGradの改良版のRMSprop，そしてそれのさらに改良版Adamの方がそれぞれ損失が低いことから，改良されていることがわかる．  
 
 <p align='center'>
-  <img src='./assets/cnn_gpu_comp_elapsed.png?raw=true'>
+  <img src='./assets/cnn_gpu_comp_elapsed.svg'>
 </p>
 
 || 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|

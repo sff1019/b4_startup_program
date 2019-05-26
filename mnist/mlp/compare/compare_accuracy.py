@@ -72,4 +72,4 @@ if __name__ == '__main__':
     plt.ylabel('Accuracy')
     plt.title(f'{device.upper()}: Accuracy Comparison Based on Optimizer')
     plt.grid(True)
-    plt.savefig(f'../assets/mlp_{device}_comp_acc.png')
+    plt.savefig(f'../assets/mlp_{device}_comp_acc.svg')

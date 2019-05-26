@@ -72,4 +72,4 @@ if __name__ == '__main__':
     plt.ylabel('Loss')
     plt.title(f'{device.upper()}: Comparison of loss by optimization method')
     plt.grid(True)
-    plt.savefig(f'../assets/cnn_{device}_comp_loss.png')
+    plt.savefig(f'../assets/cnn_{device}_comp_loss.svg')

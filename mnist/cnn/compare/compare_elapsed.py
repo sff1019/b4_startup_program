@@ -5,11 +5,11 @@ import ast
 import matplotlib.pyplot as plt
 
 
-# device = 'cpu'
-device = 'gpu'
+device = 'cpu'
+# device = 'gpu'
 path_header = 'mnist_'
-# optimizers = ['adam',  'adagrad', 'msgd', 'rmsprop', 'sgd']
-optimizers = ['adam',  'adagrad', 'momentum_sgd', 'rmsprop', 'sgd']
+optimizers = ['adam',  'adagrad', 'msgd', 'rmsprop', 'sgd']
+# optimizers = ['adam',  'adagrad', 'momentum_sgd', 'rmsprop', 'sgd']
 path_tail = '_result'
 data_list = ['elapsed_time']
 
@@ -73,4 +73,4 @@ if __name__ == '__main__':
     plt.ylabel('Elapsed Time')
     plt.title(f'{device.upper()}: Elapsed Time Comparison Based on Optimizer')
     plt.grid(True)
-    plt.savefig(f'../assets/cnn_{device}_comp_elapsed.png')
+    plt.savefig(f'../assets/cnn_{device}_comp_elapsed.svg')

@@ -74,4 +74,4 @@ if __name__ == '__main__':
     plt.ylabel('Elapsed Time')
     plt.title(f'{device.upper()}: Elapsed Time Comparison Based on Optimizer')
     plt.grid(True)
-    plt.savefig(f'../assets/mlp_{device}_comp_elapsed.png')
+    plt.savefig(f'../assets/mlp_{device}_comp_elapsed.svg')
