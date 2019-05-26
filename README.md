@@ -13,10 +13,10 @@
    - [x] MLPを用いた実装
    - [x] CNNを用いた実装
    - [x] それぞれの手法における考察
-- [ ] (Optional*) 有名なネットワークの評価・比較 (Lenet, Mobilenet, VGG16, Resnet50 etc.)
+- [x] (Optional*) 有名なネットワークの評価・比較 (Lenet, Mobilenet, VGG16, Resnet50 etc.)
 - [x] (Optional*) Optimizerごとの学習曲線を比較 (SGD, MomentumSGD, RMSProp, Adam etc.)
 - [ ] (Optional**) データの水増し手法ごとの評価・比較 (平滑化, 部分マスク, 回転, mix-up)
-- [ ] (Optional**) バッチ正規化, 勾配ノイズなどの手法の評価・比較
+- [x] (Optional**) バッチ正規化, 勾配ノイズなどの手法の評価・比較
 - [x] (Optional***) 深層学習フレームワークを用いずに, フルスクラッチでMLP(&CNN)を実装してみる
 
 
