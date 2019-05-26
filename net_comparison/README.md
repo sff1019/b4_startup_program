@@ -82,6 +82,41 @@ Shortcut Connectionを導入することによって，深い層でも性能は�
 
 ## 結果
 
+### 精度
+
+<p align='center'>
+  <img height='300' src='./assets/net_comp_gpu_accuracy.svg'>
+</p>
+
+トレインとテストで差は出ているものの，エポック数50の時点で，ResNet50が最も精度が高く，LeNet5が最も低いことがわかる．  
+しかし，エポック数が小さい時はLeNet5などのシンプルなニューラルネットワークの方が精度が良いことがわかる．これは，学習コストが小さいからではないかと予想される．  
+また，最終的なトレインの精度を以下に示す．  
+
+|モデル|精度|
+|:--:|:--:|
+|LeNet5|72.07|
+|MobileNet|72.526|
+|MobileNetV2|71.98|
+|VGG16|73.418|
+|ResNet50|73.684|
+
+### 損失
+
+<p align='center'>
+  <img height='300' src='./assets/net_comp_gpu_loss.svg'>
+</p>
+
+損失は精度が高いものほど低いことがわかる．
+
+### 実行時間
+
+<p align='center'>
+  <img height='300' src='./assets/net_comp_gpu_elapsed_time.svg'>
+</p>
+
+実行時間に関して，層が深いものほど実行時間がかかることが知られている．そう言ったことから，ResNet50が最も時間がかかることは予想をしており，上記のグラフからもわかる．  
+しかし，MobileNetが時間がかかってしまったのが疑問である．
+
 
 ## 参照
 

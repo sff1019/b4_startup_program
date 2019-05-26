@@ -13,13 +13,20 @@ parser.add_argument(
     default='accuracy',
     help='currently supports Accuracy, Loss and Evaluated Time'
 )
-parser.add_argument('--device', choices=['cpu', 'gpu'], default='gpu')
-parser.add_argument('--net_type', choices=['mlp', 'cnn'], default='mlp')
+# parser.add_argument(
+#     '--model_type',
+#     choices=['lenet', 'mobilenet', 'mobilenetv2', 'vgg16', 'resnet50'],
+#     default='lenet',
+#     help='Currently supports LeNet5, MobileNet, MobileNetV2, VGG16, ResNet50'
+# )
+# parser.add_argument('--device', choices=['cpu', 'gpu'], default='gpu')
+# parser.add_argument('--net_type', choices=['mlp', 'cnn'], default='mlp')
 
 args = parser.parse_args()
 
-path_header = 'cifar10_'
-optimizers = ['adam',  'adagrad', 'msgd', 'rmsprop', 'sgd']
+path_header = 'net_comp_gpu'
+# optimizers = ['adam',  'adagrad', 'msgd', 'rmsprop', 'sgd']
+model_type = ['lenet', 'mobilenet', 'mobilenetv2', 'vgg16', 'resnet50']
 
 if args.plot_type == 'accuracy':
     data_list = ['main/accuracy', 'test/accuracy']
@@ -31,11 +38,11 @@ elif args.plot_type == 'elapsed_time':
 
 def load_log():
     results = {}
-    for optimizer in optimizers:
+    for model in model_type:
         with open(
-            f'./outputs/{path_header}{args.net_type}_{args.device}_{optimizer}/log'
+            f'./outputs/{path_header}_{model}/log'
         ) as f:
-            results[optimizer] = ast.literal_eval(f.read())
+            results[model] = ast.literal_eval(f.read())
 
     return results
 
@@ -52,48 +59,54 @@ def extract_training_data(fields, lst):
 
 
 def print_table(lst):
-    print('|| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|  ')
-    print('|--------------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|  ')
+    header = '||'
+    alignment = '|-----------|'
+    for i in range(50):
+        header = header + f' {i} |'
+        alignment = alignment + f':-:|'
 
-    for optimizer in lst:
-        row = f'|{optimizer}|'
+    print(header)
+    print(alignment)
+
+    for model in lst:
+        row = f'|{model}|'
         for data in data_list:
-            for num in optimizers_results[optimizer][data]:
+            for num in models_results[model][data]:
                 row += f'{round(float(num), 3)}|'
         print(row)
 
 
 if __name__ == '__main__':
-    max_epochs = 10
+    max_epochs = 50
 
     results = load_log()
 
-    optimizers_results = {}
-    for optimizer in results:
-        optimizers_results[optimizer] = extract_training_data(
-            data_list, results[optimizer][0]
+    models_results = {}
+    for model in results:
+        models_results[model] = extract_training_data(
+            data_list, results[model][0]
         )
 
     fig = plt.figure(1)
     ax = fig.add_subplot(111)
-    print(optimizers_results)
-    for optimizer in optimizers_results:
+    print(models_results)
+    for model in models_results:
         for data in data_list:
             ax.plot(
                 list(range(max_epochs)),
-                optimizers_results[optimizer][data],
-                label=f'{optimizer}-{data}',
-                marker='x'
+                models_results[model][data],
+                label=f'{model}-{data}',
+                # marker='x'
             )
 
-    print_table(optimizers_results)
+    print_table(models_results)
     handles, labels = ax.get_legend_handles_labels()
     lgd = ax.legend(handles, labels, loc='upper left',
                     bbox_to_anchor=(1, 1))
     ax.set_title(
-        f'{args.device.upper()}: Accuracy Comparison Based on Optimizer')
+        f'GPU: {args.plot_type.capitalize()} Comparison Based on model')
     ax.set_xlabel('Epoch Num')
     ax.set_ylabel(f'{args.plot_type.capitalize()}')
     ax.grid(True)
-    fig.savefig(f'assets/{path_header}{args.net_type}_{args.device}_{args.plot_type}',
+    fig.savefig(f'assets/{path_header}_{args.plot_type}.svg',
                 bbox_inches='tight')
